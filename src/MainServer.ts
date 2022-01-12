@@ -5,7 +5,7 @@ import { config } from "./config";
 import { SQLDatabase } from "./db/SQLDatabase";
 import { EnvironmentValidators } from "./validators/EnvironmentValidators";
 import cors from "cors";
-import { create_apollo_server } from "./apollo";
+import { create_admin_apollo_server, create_client_apollo_server } from "./apollo";
 import { logger } from "./utils/logger";
 import session from "express-session";
 import { __DEV__, __PROD__ } from "./constants";
@@ -83,8 +83,9 @@ export class MainServer {
     // Express API Endpoints
     this.expressServer.use(setup_express_routes());
 
-    // Graphql Endpoints
-    await create_apollo_server(this.expressServer);
+    // Graphql Client Endpoints
+    await create_client_apollo_server(this.expressServer);
+    await create_admin_apollo_server(this.expressServer);
 
     // Error handlers.
     this.expressServer.use((err: any, _req: any, res: any, next: any) => {
