@@ -11,6 +11,13 @@ import session from "express-session";
 import { __DEV__, __PROD__ } from "./constants";
 import createStore from "session-file-store";
 import { setup_express_routes } from "./express";
+import { init_schedules } from "./tasks";
+
+// Currently type definitions doesn't contain gracefulShutdown types,
+// but it can be found at: https://github.com/node-schedule/node-schedule/blob/master/lib/schedule.js#L76
+// So, we use require instead of import.
+// TODO: fix it with import in case types gets merged. or add custom types in global.d.ts for node-schedule
+const schedule = require("node-schedule");
 
 export class MainServer {
   private static _httpServer: http.Server;
@@ -48,9 +55,14 @@ export class MainServer {
   public static async shutdown(): Promise<void> {
     await SQLDatabase.close();
     this.server.close();
+
+    await schedule.gracefulShutdown();
   }
 
   public static start(): void {
+    // initialize jobs
+    init_schedules();
+
     if (!this._httpServer) throw new Error("MainServer not initialized...");
     this._httpServer.listen(config.root.port, () => {
       logger.debug(`Server started at http://localhost:${config.root.port}`);
