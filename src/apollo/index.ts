@@ -6,7 +6,7 @@ import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-co
 
 export const create_client_apollo_server = async (app: e.Application): Promise<ApolloServer<ExpressContext>> => {
   const client_schema = await buildSchema({
-    resolvers: [path.join(__dirname, "..", "modules", "**", "apollo", "*Resolver.*")],
+    resolvers: [path.join(__dirname, "..", "modules", "**", "apollo", "*Resolver.{ts,js}")],
     validate: false
   });
 
@@ -26,8 +26,8 @@ export const create_client_apollo_server = async (app: e.Application): Promise<A
 export const create_admin_apollo_server = async (app: e.Application): Promise<ApolloServer<ExpressContext>> => {
   const admin_schema = await buildSchema({
     resolvers: [
-      path.join(__dirname, "..", "modules", "**", "apollo", "*Resolver.*"),
-      path.join(__dirname, "..", "modules", "**", "apollo", "admin", "*Resolver.*")
+      path.join(__dirname, "..", "modules", "**", "apollo", "*Resolver.{ts,js}"),
+      path.join(__dirname, "..", "modules", "**", "apollo", "admin", "*Resolver.{ts,js}")
     ],
     validate: false
   });

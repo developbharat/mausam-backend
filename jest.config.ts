@@ -6,7 +6,8 @@ const config: Config.InitialOptions = {
   maxWorkers: "50%",
   passWithNoTests: false,
   forceExit: false,
-  modulePathIgnorePatterns: ["dist/", "src"]
+  modulePathIgnorePatterns: ["dist/"],
+  testTimeout: 5000
 };
 
 export default config;

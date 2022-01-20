@@ -9,7 +9,6 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "test": "jest",
-    "prepare": "husky install",
     "format:write": "prettier --config .prettierrc --loglevel silent --write .",
     "format:check": "prettier --config .prettierrc --check .",
     "release": "standard-version",
