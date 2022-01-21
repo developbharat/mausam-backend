@@ -7,7 +7,8 @@ const config: Config.InitialOptions = {
   passWithNoTests: false,
   forceExit: false,
   modulePathIgnorePatterns: ["dist/"],
-  testTimeout: 5000
+  testTimeout: 5000,
+  globalSetup: "<rootDir>/__tests__/init.ts"
 };
 
 export default config;
