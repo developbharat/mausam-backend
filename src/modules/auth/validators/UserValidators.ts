@@ -5,7 +5,13 @@ import { ILoginViaEmailOptions } from "../types/user/ILoginViaEmailOptions";
 import { ILoginViaMobileOptions } from "../types/user/ILoginViaMobileOptions";
 import { IUpdateProfileOptions } from "../types/user/IUpdateProfileOptions";
 
-const passcodeSchema = Joi.string().trim().min(6).max(14).label("User passcode").required();
+const passcodeSchema = Joi.string()
+  .trim()
+  .regex(/^[a-zA-Z0-9!@#\$%\^\&*+=._]*$/, "alphabets, numbers, special characters")
+  .min(8)
+  .max(14)
+  .label("User passcode")
+  .required();
 
 const fullnameSchema = Joi.string()
   .trim()
@@ -19,6 +25,8 @@ const mobileSchema = Joi.string()
   .regex(/^[0-9]*$/, "numbers")
   .label("mobile no")
   .required();
+
+const userIdSchema = Joi.number().integer().positive().min(1).label("Mobile number").required();
 
 const emailSchema = Joi.string().trim().email({ multiple: false, allowUnicode: false }).label("email").required();
 
@@ -40,6 +48,6 @@ export class UserValidators extends BaseValidator {
   }
 
   public static isUpdateProfileOptionsValid(options: IUpdateProfileOptions): boolean {
-    return this.isValidJoi(fullnameSchema, options.full_name);
+    return this.isValidJoi(fullnameSchema, options.full_name) && this.isValidJoi(userIdSchema, options.user_id);
   }
 }

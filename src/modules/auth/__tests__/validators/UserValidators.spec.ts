@@ -106,10 +106,8 @@ describe("User Validators - Login via Mobile", () => {
   });
 
   it("returns true in case of valid options", () => {
-    expect(
-      UserValidators.isLoginViaMobileOptionsValid({ mobile: "test@mail.com", passcode: "Superb@143" })
-    ).toBeTruthy();
-    expect(UserValidators.isLoginViaMobileOptionsValid({ mobile: "test@mail.com", passcode: "passcode" })).toBeTruthy();
+    expect(UserValidators.isLoginViaMobileOptionsValid({ mobile: "9856745231", passcode: "Superb@143" })).toBeTruthy();
+    expect(UserValidators.isLoginViaMobileOptionsValid({ mobile: "9856745231", passcode: "passcode" })).toBeTruthy();
   });
 });
 
