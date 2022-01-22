@@ -1,7 +1,9 @@
-import { Router } from "express";
+import { NextFunction, Request, Response, Router } from "express";
 import path from "path";
 import { buildSchema } from "type-graphql";
 import { create_helix_server } from "./middlewares/create_helix_server";
+import { hash_request } from "./utils/hash_request";
+import { store } from "./utils/store";
 
 export const create_graphql_server = async (): Promise<Router> => {
   const router = Router();
@@ -20,8 +22,28 @@ export const create_graphql_server = async (): Promise<Router> => {
     validate: false
   });
 
-  router.use("/", create_helix_server(client_schema));
-  router.use("/admin", create_helix_server(admin_schema));
+  const cache_middleware = (req: Request, res: Response, next: NextFunction) => {
+    const hash = hash_request(req);
+    // Return cached response
+    if (store.check(hash)) {
+      return res.end(store.at(hash));
+    }
+
+    // We enabled this functionality to resolver middleware too.
+    // but you can also cache every response for few seconds,
+    // just to increase performance.
+    const end = res.end;
+    res.end = (data) => {
+      // store response for 2 second
+      store.put(hash, data, 2000);
+      return end(data);
+    };
+
+    return next();
+  };
+
+  router.use("/", cache_middleware, create_helix_server(client_schema));
+  router.use("/admin", cache_middleware, create_helix_server(admin_schema));
 
   return router;
 };
