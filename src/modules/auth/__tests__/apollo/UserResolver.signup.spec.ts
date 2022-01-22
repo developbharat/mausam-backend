@@ -1,14 +1,11 @@
 import supertest from "supertest";
-import { SQLDatabase } from "../../../../db/SQLDatabase";
 import { MainServer } from "../../../../MainServer";
 
 describe("GraphQL Signup Endpoint", () => {
   let apollo: supertest.SuperTest<supertest.Test>;
 
   beforeAll(async () => {
-    await SQLDatabase.init({ dropSchema: true, synchronize: true, migrationsRun: false });
     await MainServer.init();
-
     apollo = supertest(MainServer.expressServer);
   });
 
@@ -21,15 +18,16 @@ describe("GraphQL Signup Endpoint", () => {
       .post("/graphql")
       .send({
         query:
-          'mutation { create_new_account(options:{ full_name: "Jayant Malik", email:"valid3@mail.com", passcode:"Superb@123" }){ id, email } }'
+          'mutation { create_new_account(options:{ full_name: "Jayant Malik", email:"valid1@mail.com", passcode:"Superb@123" }){ id, email } }'
       })
       .set("Accept", "application/json")
       .expect("Content-Type", /json/)
       .expect(200)
       .end(function (err, res) {
-        if (err) return done(err);
+        expect(err).toBeNull();
         expect(res.body).toBeInstanceOf(Object);
-        expect(res.body.data.create_new_account).toMatchObject({ email: "valid3@mail.com" });
+        expect(res.body.errors).toBeUndefined();
+        expect(res.body.data.create_new_account).toMatchObject({ email: "valid1@mail.com" });
         return done();
       });
   });
@@ -44,7 +42,8 @@ describe("GraphQL Signup Endpoint", () => {
       .set("Accept", "application/json")
       .expect("Content-Type", /json/)
       .expect(200)
-      .end(function (_err, res) {
+      .end(function (err, res) {
+        expect(err).toBeNull();
         expect(res.body?.errors).toBeDefined();
         expect(res.body?.errors?.length).toBeGreaterThanOrEqual(1);
         done();

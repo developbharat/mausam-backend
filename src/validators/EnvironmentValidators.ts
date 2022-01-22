@@ -14,7 +14,7 @@ const appConfigSchema = Joi.object()
       origin: Joi.string().min(5).label("Cors Origin url: CORS_ORIGIN").required()
     }),
     db: Joi.object().keys({
-      url: Joi.string().min(10).label("Database URL: DB_URL").required()
+      url: Joi.string().min(5).label("Database URL: DB_URL").required()
     }),
     jwt: Joi.object().keys({
       secret: Joi.string().min(8).label("JSON Web Token Secret: JWT_SECRET").required()

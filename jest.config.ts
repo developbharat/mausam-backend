@@ -6,7 +6,7 @@ const config: Config.InitialOptions = {
   maxWorkers: "50%",
   passWithNoTests: false,
   forceExit: false,
-  modulePathIgnorePatterns: ["dist/"],
+  modulePathIgnorePatterns: ["dist/", "__tests__/init.ts"],
   testTimeout: 5000,
   globalSetup: "<rootDir>/__tests__/init.ts"
 };

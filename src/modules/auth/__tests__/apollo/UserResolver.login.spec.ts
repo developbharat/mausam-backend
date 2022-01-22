@@ -17,7 +17,6 @@ describe("GraphQL Login Endpoint", () => {
   let apollo: supertest.SuperTest<supertest.Test>;
 
   beforeAll(async () => {
-    await SQLDatabase.init({ dropSchema: true, synchronize: true, migrationsRun: false });
     await MainServer.init();
 
     const profile1 = await SQLDatabase.conn.getRepository(UserProfile).save({ full_name: "Jayant Malik" });
@@ -48,7 +47,7 @@ describe("GraphQL Login Endpoint", () => {
       .expect("Content-Type", /json/)
       .expect(200)
       .end(function (err, res) {
-        if (err) return done(err);
+        expect(err).toBeNull();
         expect(res.body).toBeInstanceOf(Object);
         expect(res.body.data.login_via_email).toMatchObject({ email: "valid1@mail.com" });
         return done();
@@ -66,7 +65,7 @@ describe("GraphQL Login Endpoint", () => {
       .expect("Content-Type", /json/)
       .expect(200)
       .end(function (err, res) {
-        if (err) return done(err);
+        expect(err).toBeNull();
         expect(res.body).toBeInstanceOf(Object);
         expect(res.body.data.login_via_mobile).toMatchObject({ email: "valid1@mail.com", mobile: "7654321000" });
         return done();
