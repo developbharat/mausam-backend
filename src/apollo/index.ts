@@ -34,8 +34,8 @@ export const create_graphql_server = async (): Promise<Router> => {
     // just to increase performance.
     const end = res.end;
     res.end = (data) => {
-      // store response for 2 second
-      store.put(hash, data, 2000);
+      // Note: Ignore if some middleware updated the store.
+      if (!store.at(hash)) store.put(hash, data, 2000);
       return end(data);
     };
 
