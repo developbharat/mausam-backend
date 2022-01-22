@@ -36,4 +36,15 @@ export class UserResolver {
   async update_profile(@Ctx() { req }: ExpressContext, @Arg("options") options: UpdateProfileInput): Promise<User> {
     return await userService.update_profile({ ...options, user_id: req.session.user_id! });
   }
+
+  @Mutation(() => Boolean)
+  async logout(@Ctx() { req, res }: ExpressContext): Promise<boolean> {
+    return await new Promise<boolean>((resolve, reject) => {
+      req.session.destroy((err) => {
+        res.clearCookie("uid");
+        if (err) reject(err);
+        return resolve(true);
+      });
+    });
+  }
 }
