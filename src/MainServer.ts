@@ -1,17 +1,17 @@
 require("reflect-metadata");
-import express from "express";
-import http from "http";
-import { config } from "./config";
-import { SQLDatabase } from "./db/SQLDatabase";
-import { EnvironmentValidators } from "./validators/EnvironmentValidators";
 import cors from "cors";
-import { create_admin_apollo_server, create_client_apollo_server } from "./apollo";
-import { logger } from "./utils/logger";
+import express from "express";
 import session from "express-session";
-import { __DEV__, __PROD__ } from "./constants";
+import http from "http";
 import createStore from "session-file-store";
+import { create_graphql_server } from "./apollo";
+import { config } from "./config";
+import { __PROD__ } from "./constants";
+import { SQLDatabase } from "./db/SQLDatabase";
 import { setup_express_routes } from "./express";
 import { init_schedules } from "./tasks";
+import { logger } from "./utils/logger";
+import { EnvironmentValidators } from "./validators/EnvironmentValidators";
 
 // Currently type definitions doesn't contain gracefulShutdown types,
 // but it can be found at: https://github.com/node-schedule/node-schedule/blob/master/lib/schedule.js#L76
@@ -95,9 +95,8 @@ export class MainServer {
     // Express API Endpoints
     this.expressServer.use(setup_express_routes());
 
-    // Graphql Client Endpoints
-    await create_client_apollo_server(this.expressServer);
-    await create_admin_apollo_server(this.expressServer);
+    // Graphql Endpoints
+    this.expressServer.use("/graphql", await create_graphql_server());
 
     // Error handlers.
     this.expressServer.use((err: any, _req: any, res: any, next: any) => {
