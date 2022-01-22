@@ -1,10 +1,12 @@
-import { Arg, Ctx, Mutation, Query, Resolver } from "type-graphql";
+import { Arg, Ctx, Mutation, Query, Resolver, UseMiddleware } from "type-graphql";
+import { cache } from "../../../apollo/middlewares/cache";
 import { User } from "../../../entities/auth/User";
 import * as userService from "../services/user.service";
 import { CreateNewAccountInput, LoginViaEmailInput, LoginViaMobileInput, UpdateProfileInput } from "./user";
 
 @Resolver()
 export class UserResolver {
+  @UseMiddleware(cache(10000))
   @Query(() => User, { nullable: true })
   async me(@Ctx() { req }: ExpressContext): Promise<User | undefined> {
     return req.session.user_id ? await userService.find_user_by_id(req.session.user_id) : undefined;
