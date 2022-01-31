@@ -23,7 +23,6 @@ export class WeatherObservation {
   @Column({ unique: true })
   uid: string;
 
-  @Field(() => ObservationStation)
   @JoinColumn()
   @ManyToOne(() => ObservationStation, { eager: true })
   station: ObservationStation;
@@ -193,5 +192,10 @@ export class WeatherObservation {
       observation.created_at || "",
       observation.updated_at || ""
     ].join(",");
+  }
+
+  public static clean(observation: WeatherObservation): WeatherObservation {
+    Reflect.deleteProperty(observation, "station");
+    return observation;
   }
 }
