@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://github.com/developbharat/mausam-backend/compare/v0.0.2...v0.0.3) (2022-02-06)
+
+
+### Features
+
+* added logout functionality ([2b4d42e](https://github.com/developbharat/mausam-backend/commit/2b4d42e56402266601b998c6d1b15f0c724c2e7f))
+* added user apps functionality ([023710f](https://github.com/developbharat/mausam-backend/commit/023710f415c76c5c8444b5a2020426f293d9a180))
+* added user apps functionality ([a3c216b](https://github.com/developbharat/mausam-backend/commit/a3c216b95a4c53a4f5229bd9062dfb3c400960ed))
+
+
+### Bug Fixes
+
+* fixed middleware cache issue ([7e02e87](https://github.com/developbharat/mausam-backend/commit/7e02e8785b0a6b533d49626b728b0662f634543a))
+* updated migrations for user apps ([7c05954](https://github.com/developbharat/mausam-backend/commit/7c05954d35b5029c9b726bd6ad21bbcaf6f13e00))
+
 ### 0.0.2 (2022-01-22)
 
 

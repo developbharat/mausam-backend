@@ -1,6 +1,6 @@
 {
   "name": "mausam-backend",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Processing Weather data for indian citizens.",
   "main": "dist/index.js",
   "private": true,
