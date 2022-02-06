@@ -1,6 +1,6 @@
 import { Arg, Mutation, Resolver, UseMiddleware } from "type-graphql";
 import { isAdmin } from "../../../../apollo/middlewares/isAdmin";
-import { District } from "../../../../entities/area/District";
+import { District } from "../../entities/area/District";
 import * as districtService from "../../services/admin/district.service";
 import { CreateNewDistrictInput, DeleteDistrictInput } from "./district";
 

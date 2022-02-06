@@ -1,5 +1,5 @@
 import { SQLDatabase } from "../../../../db/SQLDatabase";
-import { WeatherObservation } from "../../../../entities/weather/WeatherObservation";
+import { WeatherObservation } from "../../../weather/entities/weather/WeatherObservation";
 import { IObservation } from "../types/IProcessFileResult";
 
 export const create_weather_observation = (result: IObservation): WeatherObservation => {

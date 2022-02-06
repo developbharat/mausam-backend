@@ -1,10 +1,9 @@
 import { CustomError, GeneralStatusCodes } from "../../../../core/errors/CustomError";
 import { SQLDatabase } from "../../../../db/SQLDatabase";
-import { District } from "../../../../entities/area/District";
+import { District } from "../../entities";
 import { ICreateDistrictOptions } from "../../types/district/admin/ICreateDistrictOptions";
 import { IDeleteDistrictOptions } from "../../types/district/admin/IDeleteDistrictOptions";
-import { DistrictValidators } from "../../validators/DistrictValidators";
-import { StateValidators } from "../../validators/StateValidators";
+import { DistrictValidators, StateValidators } from "../../validators";
 
 export const create_new_district = async (options: ICreateDistrictOptions): Promise<District> => {
   if (!DistrictValidators.isCreateDistrictOptionsValid(options)) {

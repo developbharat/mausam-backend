@@ -1,7 +1,7 @@
 import { Arg, Query, Resolver, UseMiddleware } from "type-graphql";
 import { cache } from "../../../apollo/middlewares/cache";
 import { isAuthenticated } from "../../../apollo/middlewares/isAuthenticated";
-import { District } from "../../../entities/area/District";
+import { District } from "../entities/area/District";
 import * as districtService from "../services/district.service";
 import { ListDistrictsInput } from "./district";
 

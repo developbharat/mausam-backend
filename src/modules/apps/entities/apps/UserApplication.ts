@@ -9,8 +9,8 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn
 } from "typeorm";
-import { User } from "../auth/User";
-import { ObservationStation } from "../weather/ObservationStation";
+import { User } from "../../../auth";
+import { ObservationStation } from "../../../weather";
 import { IPV4Address } from "./IPV4Address";
 
 @ObjectType()

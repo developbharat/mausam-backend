@@ -1,9 +1,9 @@
 import { CustomError, GeneralStatusCodes } from "../../../../core/errors/CustomError";
 import { SQLDatabase } from "../../../../db/SQLDatabase";
-import { State } from "../../../../entities/area/State";
+import { State } from "../../entities";
 import { ICreateStateOptions } from "../../types/state/admin/ICreateStateOptions";
 import { IDeleteStateOptions } from "../../types/state/admin/IDeleteStateOptions";
-import { StateValidators } from "../../validators/StateValidators";
+import { StateValidators } from "../../validators";
 
 export const create_new_state = async (options: ICreateStateOptions): Promise<State> => {
   if (!StateValidators.isCreateStateOptionsValid(options)) {

@@ -1,6 +1,6 @@
 import { Arg, Ctx, Mutation, Query, Resolver, UseMiddleware } from "type-graphql";
 import { isAuthenticated } from "../../../apollo/middlewares/isAuthenticated";
-import { UserApplication } from "../../../entities/apps/UserApplication";
+import { UserApplication } from "../entities/apps/UserApplication";
 import * as appsService from "../services/apps.service";
 import {
   CreateApplicationInput,

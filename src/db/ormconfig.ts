@@ -10,10 +10,10 @@ export default {
   synchronize: false,
   migrationsRun: true,
   dropSchema: __TEST__,
-  entities: [path.join(__dirname, "..", "entities", "**", "*.*"), path.join(__dirname, "..", "entities", "*.*")],
+  entities: [path.join(__dirname, "..", "modules", "entities", "**", "*.*")],
   migrations: [path.join(__dirname, "migrations", "*.*")],
   cli: {
-    entitiesDir: path.join(__dirname, "..", "entities"),
+    entitiesDir: path.join(__dirname, "..", "modules", "entities", "**", "*.*"),
     migrationsDir: path.join(__dirname, "migrations")
   }
 } as ConnectionOptions;

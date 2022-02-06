@@ -1,15 +1,14 @@
 import { customAlphabet } from "nanoid";
 import { CustomError, GeneralStatusCodes } from "../../../core/errors/CustomError";
 import { SQLDatabase } from "../../../db/SQLDatabase";
-import { IPV4Address } from "../../../entities/apps/IPV4Address";
-import { UserApplication } from "../../../entities/apps/UserApplication";
-import { User } from "../../../entities/auth/User";
-import { ObservationStation } from "../../../entities/weather/ObservationStation";
+import { IPV4Address, UserApplication } from "../entities";
+import { User } from "../../auth";
+import { ObservationStation } from "../../weather";
 import { IAddObservationStationOptions } from "../types/apps/IAddObservationStationOptions";
 import { ICreateApplicationOptions } from "../types/apps/ICreateApplicationOptions";
 import { IListUserApplicationsOptions } from "../types/apps/IListUserApplicationsOptions";
 import { ISetWhitelistIpOptions } from "../types/apps/ISetWhitelistIpOptions";
-import { AppsValidators } from "../validators/AppsValidators";
+import { AppsValidators } from "../validators";
 
 const nanoid = customAlphabet("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz", 21);
 

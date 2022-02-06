@@ -1,6 +1,6 @@
 import { Arg, Mutation, Resolver, UseMiddleware } from "type-graphql";
 import { isAdmin } from "../../../../apollo/middlewares/isAdmin";
-import { State } from "../../../../entities/area/State";
+import { State } from "../../entities/area/State";
 import * as stateService from "../../services/admin/state.service";
 import { CreateNewStateInput, DeleteStateInput } from "./state";
 

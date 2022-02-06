@@ -1,7 +1,7 @@
 import { Query, Resolver, UseMiddleware } from "type-graphql";
 import { cache } from "../../../apollo/middlewares/cache";
 import { isAuthenticated } from "../../../apollo/middlewares/isAuthenticated";
-import { State } from "../../../entities/area/State";
+import { State } from "../entities/area/State";
 import * as stateService from "../services/state.service";
 
 @Resolver()

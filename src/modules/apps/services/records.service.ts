@@ -1,8 +1,8 @@
 import { Between } from "typeorm";
 import { CustomError, GeneralStatusCodes } from "../../../core/errors/CustomError";
 import { SQLDatabase } from "../../../db/SQLDatabase";
-import { UserApplication } from "../../../entities/apps/UserApplication";
-import { WeatherObservation } from "../../../entities/weather/WeatherObservation";
+import { UserApplication } from "../entities";
+import { WeatherObservation } from "../../weather";
 import { IPaginatedResult } from "../../../types/pagination/IPaginatedResult";
 import { process_pagination_options } from "../../../utils/process_pagination_options";
 import { IListObservationOptions } from "../types/records/IListObservationOptions";

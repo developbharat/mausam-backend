@@ -1,6 +1,6 @@
 import { Field, ObjectType } from "type-graphql";
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { range } from "../../utils/range";
+import { range } from "../../../../utils/range";
 
 @ObjectType()
 @Entity("ipv4_addresses")

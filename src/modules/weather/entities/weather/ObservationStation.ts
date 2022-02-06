@@ -9,7 +9,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn
 } from "typeorm";
-import { District } from "../area/District";
+import { District } from "../../../area";
 
 @ObjectType()
 @Entity("observation_stations")

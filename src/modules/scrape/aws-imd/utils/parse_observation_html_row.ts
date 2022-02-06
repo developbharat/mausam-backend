@@ -1,4 +1,4 @@
-import { WeatherObservation } from "../../../../entities/weather/WeatherObservation";
+import { WeatherObservation } from "../../../weather/entities/weather/WeatherObservation";
 import { headers_map } from "../constants/headers_map";
 import { IObservation } from "../types/IProcessFileResult";
 import { create_weather_observation } from "./create_weather_observation";

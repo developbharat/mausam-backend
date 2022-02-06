@@ -2,13 +2,12 @@ import argon2 from "argon2";
 import { __AUTH_ROLE_ID_CLIENT__ } from "../../../constants";
 import { AuthStatusCodes, CustomError, GeneralStatusCodes, ServerStatusCodes } from "../../../core/errors/CustomError";
 import { SQLDatabase } from "../../../db/SQLDatabase";
-import { User } from "../../../entities/auth/User";
-import { UserProfile } from "../../../entities/auth/UserProfile";
+import { User, UserProfile } from "../entities";
 import { ICreateNewAccountOptions } from "../types/user/ICreateNewAccountOptions";
 import { ILoginViaEmailOptions } from "../types/user/ILoginViaEmailOptions";
 import { ILoginViaMobileOptions } from "../types/user/ILoginViaMobileOptions";
 import { IUpdateProfileOptions } from "../types/user/IUpdateProfileOptions";
-import { UserValidators } from "../validators/UserValidators";
+import { UserValidators } from "../validators";
 
 export const find_user_by_id = async (id: number): Promise<User | undefined> => {
   if (!Number(id)) throw new CustomError(ServerStatusCodes.InternalServerError, "User id must be a number.");

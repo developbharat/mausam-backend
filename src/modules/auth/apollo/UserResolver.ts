@@ -1,6 +1,6 @@
 import { Arg, Ctx, Mutation, Query, Resolver, UseMiddleware } from "type-graphql";
 import { cache } from "../../../apollo/middlewares/cache";
-import { User } from "../../../entities/auth/User";
+import { User } from "../entities/auth/User";
 import * as userService from "../services/user.service";
 import { CreateNewAccountInput, LoginViaEmailInput, LoginViaMobileInput, UpdateProfileInput } from "./user";
 

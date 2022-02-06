@@ -1,6 +1,6 @@
 import { CustomError, GeneralStatusCodes } from "../../../core/errors/CustomError";
 import { SQLDatabase } from "../../../db/SQLDatabase";
-import { District } from "../../../entities/area/District";
+import { District } from "../entities";
 import { IListDistrictOptions } from "../types/district/IListDistrictOptions";
 import { DistrictValidators } from "../validators/DistrictValidators";
 

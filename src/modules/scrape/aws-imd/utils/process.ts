@@ -1,8 +1,8 @@
 import es from "event-stream";
 import fs from "fs";
 import { SQLDatabase } from "../../../../db/SQLDatabase";
-import { ObservationStation } from "../../../../entities/weather/ObservationStation";
-import { WeatherObservation } from "../../../../entities/weather/WeatherObservation";
+import { ObservationStation } from "../../../weather/entities/weather/ObservationStation";
+import { WeatherObservation } from "../../../weather/entities/weather/WeatherObservation";
 import { parse_observation_html_row } from "./parse_observation_html_row";
 
 export const process_raw_html_observations = async (filepath: string): Promise<void> => {

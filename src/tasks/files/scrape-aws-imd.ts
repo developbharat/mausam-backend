@@ -1,6 +1,8 @@
 import schedule from "node-schedule";
-import { scrape_aws_imd_all_states } from "../../modules/scrape/aws-imd";
+import { awsImd } from "../../modules/scrape";
 import { logger } from "../../utils/logger";
+
+const { scrape_aws_imd_all_states } = awsImd;
 
 // Execute when the minute is 35, - 10:35, 11:35 etc.
 schedule.scheduleJob("35 * * * *", async (date) => {

@@ -10,7 +10,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn
 } from "typeorm";
-import { __AUTH_ROLE_ID_ADMIN__ } from "../../constants";
+import { __AUTH_ROLE_ID_ADMIN__ } from "../../../../constants";
 import { UserProfile } from "./UserProfile";
 import { UserRole } from "./UserRole";
 

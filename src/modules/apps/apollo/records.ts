@@ -1,7 +1,7 @@
 import { Field, ID, InputType, ObjectType } from "type-graphql";
 import { PaginatedResult } from "../../../apollo/common/PaginatedResult";
 import { PaginationInput } from "../../../apollo/common/PaginationInput";
-import { WeatherObservation } from "../../../entities/weather/WeatherObservation";
+import { WeatherObservation } from "../../weather/entities/weather/WeatherObservation";
 
 @InputType()
 export class ListObservationsInput extends PaginationInput {
